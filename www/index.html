@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+  <script src="js/jquery.min.js"> </script>
+  <script src="js/jquery.mobile-1.4.5.min.js"> </script>
+  <script src="cordova.js"></script>
+  <script>
+    function opp() {
+      var sel = document.getElementById("selectopp");
+      var selopp = sel.options[sel.selectedIndex].value;
+
+      var num1, num2, total;
+      num1 = document.getElementById("select-num1").value;
+      num2 = document.getElementById("select-num2").value;
+
+      if (selopp=="add"){
+        total = +num1 + +num2;
+        document.getElementById("oppres").innerHTML = num1 +" + "+num2;
+      }
+      if (selopp=="sub"){
+        total = num1 - num2;
+        document.getElementById("oppres").innerHTML = num1 +" - "+num2;
+      }
+      if (selopp=="mult"){
+        total = num1 * num2;
+        document.getElementById("oppres").innerHTML = num1 +" * "+num2;
+      }
+      if (selopp=="divi"){
+        total = num1 / num2;
+        document.getElementById("oppres").innerHTML = num1 +" ÷ "+num2;
+      }
+      document.getElementById("res").innerHTML = total;
+      window.location.replace("#pagecal");
+    }
+  </script>
+  <title>Calculator</title>
+</head>
+
+<body>
+  <div data-role="page" id="pageone" data-theme="a">
+    <div data-role="header">
+      <h1><b>Simple Calculator</b></h1>
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" class="ui-btn-active ui-state-persist" data-icon="home" dataicon="home">Home</a></li>
+          <li><a href="#pagetwo" data-icon="grid">Calculator</a></li>
+          <li><a href="#pagethree" data-icon="info">Help</a></li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="main" class="ui-content">
+      <p>This is a jQuery mobile exercise which provices the user with a calculator for basic mathematical operation!!</p>
+    </div>
+    <div data-role="footer">
+      <h2><b>Homework</b></h2>
+    </div>
+  </div>
+  <div data-role="page" id="pagetwo" data-theme="a">
+    <div data-role="header">
+      <h1><b>Simple Calculator</b></h1>
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" data-icon="home" dataicon="home">Home</a></li>
+          <li><a href="#pagetwo" class="ui-btn-active ui-state-persist" data-icon="grid">Calculator</a></li>
+          <li><a href="#pagethree" data-icon="info">Help</a></li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="main" class="ui-content">
+      <input type="number" data-clear-btn="true" name="select-num1" pattern="[0-9]*" id="select-num1" value="">
+      <form>
+        <fieldset data-role="controlgroup">
+          <label for="selectopp">Select operation</label>
+            <select name="selectopp" data-native-menu="false" id="selectopp">
+              <option value="Choose operation" data-placeholder="true">Choose operation</option>
+              <option value="add">+</option>
+              <option value="sub">-</option>
+              <option value="mult">*</option>
+              <option value="divi">÷</option>
+            </select>
+        </fieldset>
+      </form>
+      <input type="number" data-clear-btn="true" name="select-num2" pattern="[0-9]*" id="select-num2" value="">
+      <input id="btn-cal" onclick="opp()" class="ui-corner-all" type="button" value="Calculate">
+    </div>
+    <div data-role="footer">
+      <h2><b>Homework</b></h2>
+    </div>
+  </div>
+  <div data-role="page" id="pagecal" data-theme="a">
+    <div data-role="header">
+      <h1><b>Simple Calculator</b></h1>
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" data-icon="home" dataicon="home">Home</a></li>
+          <li><a href="#pagetwo" data-icon="grid">Calculator</a></li>
+          <li><a href="#pagethree" data-icon="info">Help</a></li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="main" class="ui-content">
+      <legend>Operation:</legend>
+      <b><p id="oppres"></p></b>
+      <legend>Results:</legend>
+      <b><p id="res"></p></b>
+      <br/>
+      <a href="#pagetwo" class="ui-btn ui-icon-back ui-btn-icon-left ui-corner-all">Go Back</a>
+    </div>
+    <div data-role="footer">
+      <h2><b>Homework</b></h2>
+    </div>
+  </div>
+  <div data-role="page" id="pagethree" data-theme="a">
+    <div data-role="header">
+      <h1><b>Simple Calculator</b></h1>
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" data-icon="home" dataicon="home">Home</a></li>
+          <li><a href="#pagetwo" data-icon="grid">Calculator</a></li>
+          <li><a href="#pagethree" class="ui-btn-active ui-state-persist" data-icon="info">Help</a></li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="main" class="ui-content">
+      <p>This is the help section and provides basic information about how to use the calculator!!</p>
+      <br/>
+      <a href="#pagehelp" data-transition="slideup" class="ui-btn ui-icon-info ui-btn-icon-left ui-corner-all" >More Info</a>
+    </div>
+    <div data-role="footer">
+      <h2><b>Homework</b></h2>
+    </div>
+  </div>
+  <div data-role="page" id="pagehelp" data-dialog="true" data-theme="a">
+    <div data-role="header">
+      <h1><b>More Info</b></h1>
+    </div>
+    <div data-role="main" class="ui-content">
+      <p>You have requested more information about the App!!</p>
+      <br/>
+      <a href="#" class="ui-btn ui-icon-back ui-btn-icon-left ui-corner-all" data-rel="back" data-transition="fade" >Dismiss</a>
+    </div>
+  </div>
+</body>
+
+</html>
